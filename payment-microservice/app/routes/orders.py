@@ -6,7 +6,7 @@ import httpx
 
 router = APIRouter()
 
-@router.post("/orders")
+@router.post("/")
 async def get_orders(request: Request):
 
     body = await request.json()
@@ -14,13 +14,16 @@ async def get_orders(request: Request):
     #validate that 'id' exists in the incoming body
     if "id" not in body:
         raise HTTPException(status_code=400, detail="Missing 'id' in request body")
+
+    if "quantity" not in body:
+        raise HTTPException(status_code=400, detail="Missing '' in request body")
     
     product_id =  body["id"]
     async with httpx.AsyncClient() as client:
         # Forward the request body as JSON to the external API
-        response = await client.post(f'http://127.0.0.1:8000/products/{product_id}', json=body)
+        response = await client.get(f'http://127.0.0.1:8000/products/{product_id}')
         
         return {
             "status_code": response.status_code,
-            "response_from_example_com": response.text
+            "response": response.text
         }
