@@ -1,4 +1,28 @@
+# Environment files
 .env
-/.env
-__pycache__
-venv
+.env.*
+*.env
+
+# Python virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.so
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
