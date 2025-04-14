@@ -5,7 +5,6 @@ from fastapi.background import BackgroundTasks
 from app.models.order import Order
 import httpx
 from time import sleep
-import redis
 
 
 router = APIRouter()
@@ -64,5 +63,5 @@ def order_completed(order: Order):
     sleep(5)
     order.status = "completed"
     order.save()
-    redis.xadd('order_completed',order.dict(),'*')
+    
     
