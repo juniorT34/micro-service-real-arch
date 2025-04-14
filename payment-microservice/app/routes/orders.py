@@ -2,11 +2,9 @@ from fastapi import APIRouter,Request,HTTPException
 #from starlette.requests import Request
 from app.models.order import Order
 import httpx
-import asyncio
 
 
 router = APIRouter()
-#  'http://127.0.0.1:8000/products/01JRNC81XSK5PK75HPDBW0BJW5' \
 
 @router.post("/orders")
 async def get_orders(request: Request):
